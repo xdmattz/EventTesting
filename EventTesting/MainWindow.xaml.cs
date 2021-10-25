@@ -22,6 +22,19 @@ namespace EventTesting
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
+    /// information for how to do this came from several places
+    ///
+    /// https://www.tutorialsteacher.com/csharp/csharp-event
+    /// https://www.tutorialsteacher.com/csharp/csharp-delegates
+    /// 
+    /// also
+    /// https://stackoverflow.com/questions/26293506/updating-ui-from-a-background-thread-and-thread-within-a-thread
+    /// https://stackoverflow.com/questions/9602567/how-to-update-ui-from-another-thread-running-in-another-class/9602723
+    /// https://stackoverflow.com/questions/2403972/c-sharp-events-between-threads-executed-in-their-own-thread-how-to
+    ///
+    ///
+
     public partial class MainWindow : Window
     {
         static int Timer_Value;
@@ -191,7 +204,8 @@ namespace EventTesting
                 int tInput = 5;
                 // tDoWork runs as a separate thread
                 workThread = new Thread(() => tDoWork(tInput, callback, callback2));
-                // }
+                // the above line uses a lambda expression... still trying to figure that out...
+                // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/lambda-expressions
                 workThread.Start();
             }
             else
